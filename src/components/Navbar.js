@@ -41,6 +41,7 @@ export default function Navbar({ onOpenAudit }) {
     },
     { name: "Global Reach", href: "#global" },
     { name: "Process", href: "#process" },
+    { name: "Blog", href: "/blog" },
     { name: "Contact", href: "#contact" },
   ];
 
