@@ -1,8 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { Target, Users, Zap, Award, CheckCircle2 } from "lucide-react";
 
 export default function Philosophy() {
+  const [flippedIndex, setFlippedIndex] = useState(null);
+
   const pillars = [
     {
       icon: Users,
@@ -34,6 +37,10 @@ export default function Philosophy() {
     },
   ];
 
+  const handleCardClick = (index) => {
+    setFlippedIndex((prev) => (prev === index ? null : index));
+  };
+
   return (
     <section id="philosophy" className="py-10 relative bg-[#09090b] overflow-hidden">
       {/* Background glow */}
@@ -57,12 +64,18 @@ export default function Philosophy() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {pillars.map((pillar, index) => {
             const IconComponent = pillar.icon;
+            const isFlipped = flippedIndex === index;
             return (
               <div
                 key={index}
-                className="group perspective-1000 h-[210px] cursor-pointer"
+                onClick={() => handleCardClick(index)}
+                className="group perspective-1000 min-h-[210px] h-[210px] cursor-pointer"
               >
-                <div className="relative w-full h-full duration-700 transform-style-3d transition-transform group-hover:[transform:rotateY(180deg)]">
+                <div
+                  className={`relative w-full h-full duration-700 transform-style-3d transition-transform group-hover:[transform:rotateY(180deg)] ${
+                    isFlipped ? "[transform:rotateY(180deg)]" : ""
+                  }`}
+                >
                   {/* FRONT SIDE */}
                   <div className="absolute inset-0 w-full h-full backface-hidden glass-card rounded-2xl p-5 border border-zinc-800 flex flex-col justify-between group-hover:border-[#E40101]/40 transition-colors">
                     <div>

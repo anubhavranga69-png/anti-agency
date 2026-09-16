@@ -134,11 +134,11 @@ export default function Navbar({ onOpenAudit }) {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ y: "-100%" }}
-            animate={{ y: 0 }}
-            exit={{ y: "-100%" }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed inset-0 z-40 bg-zinc-900/90 backdrop-blur-2xl flex flex-col items-center justify-center px-6 py-6 space-y-4"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="fixed inset-0 z-40 bg-zinc-950/95 backdrop-blur-2xl flex flex-col justify-between px-6 pt-24 pb-8 overflow-y-auto w-full"
           >
             <nav className="flex flex-col space-y-3 w-full">
               {navLinks.map((link) => (
@@ -167,13 +167,13 @@ export default function Navbar({ onOpenAudit }) {
                 </div>
               ))}
             </nav>
-            <div className="pt-2 flex flex-col gap-3">
+            <div className="pt-6 flex flex-col gap-3 w-full">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenAudit();
                 }}
-                className="w-full flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider text-white bg-zinc-900 border border-zinc-700 py-3 rounded-xl"
+                className="w-full flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider text-white bg-zinc-900 border border-zinc-700 py-3 rounded-xl cursor-pointer"
               >
                 <Sparkles className="w-4 h-4 text-[#E40101]" />
                 Book Brand Audit

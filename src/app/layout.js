@@ -1,4 +1,4 @@
-import { Bebas_Neue, Inter, Playfair_Display } from "next/font/google";
+import { Bebas_Neue, Inter } from "next/font/google";
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -13,9 +13,40 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Anti-Agency | Brand Building, Web Design & Digital Agency",
+  metadataBase: new URL("https://anti-agency.in"),
+  title: {
+    default: "Anti-Agency | Brand & Digital Growth Agency",
+    template: "%s | Anti-Agency",
+  },
   description:
-    "Build a memorable brand with Anti-Agency. We offer website design, branding, social media, video production, AI content, and brand strategy across US, UK, India, Australia, and Dubai.",
+    "Anti-Agency is a global brand and digital growth agency engineering distinctive brand identities, bespoke websites, digital marketing, and AI content systems for ambitious companies worldwide.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://anti-agency.in",
+    siteName: "Anti-Agency",
+    title: "Anti-Agency | Brand & Digital Growth Agency",
+    description:
+      "Anti-Agency is a global brand and digital growth agency engineering distinctive brand identities, bespoke websites, digital marketing, and AI content systems for ambitious companies worldwide.",
+    images: [
+      {
+        url: "/logo.svg",
+        width: 800,
+        height: 600,
+        alt: "Anti-Agency Brand Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Anti-Agency | Brand & Digital Growth Agency",
+    description:
+      "Global brand and digital growth agency engineering bespoke digital platforms and brand identities.",
+    images: ["/logo.svg"],
+  },
   icons: {
     icon: "/logo.svg",
     shortcut: "/logo.svg",
@@ -35,4 +66,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-

@@ -104,6 +104,9 @@ export default function Footer({ onOpenAudit }) {
                 <a href="#process" className="hover:text-white transition-colors">Execution Process</a>
               </li>
               <li>
+                <a href="/blog" className="hover:text-white transition-colors">Journal / Insights</a>
+              </li>
+              <li>
                 <button onClick={onOpenAudit} className="hover:text-[#E40101] transition-colors text-left">
                   Instant Brand Health Audit
                 </button>

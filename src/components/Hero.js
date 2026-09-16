@@ -8,7 +8,9 @@ import {
   Send,
   ShieldCheck,
   Zap,
+  AlertCircle,
 } from "lucide-react";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function Hero({ onOpenAudit }) {
   const [formData, setFormData] = useState({
@@ -21,14 +23,42 @@ export default function Hero({ onOpenAudit }) {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
+    setError("");
+
+    const { error: insertError } = await supabase.from("leads").insert([
+      {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || null,
+        company: formData.company || null,
+        service: formData.service,
+        message: formData.details || null,
+      },
+    ]);
+
+    if (insertError) {
+      setError(
+        "Something went wrong submitting your enquiry. Please try again or email us directly."
+      );
+      setLoading(false);
+    } else {
       setLoading(false);
       setSubmitted(true);
-    }, 800);
+      // Reset form for next submission
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        service: "Website Design",
+        details: "",
+      });
+    }
   };
 
   return (
@@ -117,7 +147,7 @@ export default function Hero({ onOpenAudit }) {
                     and reach out within 24 hours.
                   </p>
                   <button
-                    onClick={() => setSubmitted(false)}
+                    onClick={() => { setSubmitted(false); setError(""); }}
                     className="mt-6 text-xs font-semibold text-[#E40101] underline hover:text-white"
                   >
                     Submit another enquiry
@@ -223,6 +253,16 @@ export default function Hero({ onOpenAudit }) {
                       className="w-full bg-zinc-900/90 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#E40101] transition-colors resize-none"
                     />
                   </div>
+
+                  {error && (
+                    <div
+                      role="alert"
+                      className="flex items-start gap-2 px-3.5 py-2.5 rounded-xl bg-[#E40101]/10 border border-[#E40101]/30 text-[11px] text-red-300"
+                    >
+                      <AlertCircle className="w-3.5 h-3.5 mt-0.5 shrink-0 text-[#E40101]" />
+                      <span>{error}</span>
+                    </div>
+                  )}
 
                   <button
                     type="submit"

@@ -235,7 +235,7 @@ export default function WhyChooseUs() {
             return (
               <div
                 key={idx}
-                className="w-[300px] sm:w-[340px] shrink-0 glass-card rounded-2xl p-6 border border-zinc-800/90 hover:border-[#E40101]/60 transition-all duration-300 group flex flex-col justify-between min-h-[250px] relative overflow-hidden bg-gradient-to-b from-zinc-900/60 to-zinc-950/90 shadow-xl select-none"
+                className="w-[270px] min-[360px]:w-[300px] sm:w-[340px] shrink-0 glass-card rounded-2xl p-5 sm:p-6 border border-zinc-800/90 hover:border-[#E40101]/60 transition-all duration-300 group flex flex-col justify-between min-h-[240px] sm:min-h-[250px] relative overflow-hidden bg-gradient-to-b from-zinc-900/60 to-zinc-950/90 shadow-xl select-none"
               >
                 {/* Ambient hover flare */}
                 <div className="absolute top-0 right-0 w-28 h-28 bg-[#E40101]/5 blur-[35px] group-hover:bg-[#E40101]/15 transition-colors pointer-events-none" />

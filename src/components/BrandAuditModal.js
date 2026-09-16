@@ -32,12 +32,12 @@ export default function BrandAuditModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="glass-card rounded-3xl max-w-xl w-full p-6 sm:p-8 border border-zinc-700 relative shadow-2xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto">
+      <div className="glass-card rounded-3xl max-w-xl w-full p-6 sm:p-8 border border-zinc-700 relative shadow-2xl max-h-[90vh] overflow-y-auto my-auto">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 p-2 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-[#E40101] transition-colors"
+          className="absolute top-6 right-6 p-2 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-[#E40101] transition-colors cursor-pointer z-10"
         >
           <X className="w-5 h-5" />
         </button>

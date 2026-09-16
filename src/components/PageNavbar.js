@@ -30,6 +30,7 @@ export default function PageNavbar() {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
+    { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/#contact" },
   ];
 
@@ -97,13 +98,13 @@ export default function PageNavbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ y: "-100%" }}
-            animate={{ y: 0 }}
-            exit={{ y: "-100%" }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed inset-0 z-40 bg-zinc-900/90 backdrop-blur-2xl flex flex-col items-center justify-center px-6 py-6 space-y-4"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="fixed inset-0 z-40 bg-zinc-950/95 backdrop-blur-2xl flex flex-col justify-between px-6 pt-24 pb-8 overflow-y-auto w-full"
           >
-            <nav className="flex flex-col space-y-3">
+            <nav className="flex flex-col space-y-3 w-full">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -115,14 +116,16 @@ export default function PageNavbar() {
                 </a>
               ))}
             </nav>
-            <a
-              href="/#hero-enquiry"
-              onClick={handleLinkClick}
-              className="w-full flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider text-white bg-[#E40101] py-3 rounded-xl shadow-lg shadow-[#E40101]/30"
-            >
-              Start Your Project
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
+            <div className="pt-6 w-full">
+              <a
+                href="/#hero-enquiry"
+                onClick={handleLinkClick}
+                className="w-full flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider text-white bg-[#E40101] py-3 rounded-xl shadow-lg shadow-[#E40101]/30"
+              >
+                Start Your Project
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

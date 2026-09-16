@@ -521,7 +521,7 @@ export default async function ServiceDetailPage({ params }) {
                 </h2>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                 {service.relatedServices.map((rel, idx) => (
                   <a
                     key={idx}
