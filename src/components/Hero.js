@@ -134,7 +134,7 @@ export default function Hero({ onOpenAudit }) {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 pb-4 overflow-hidden bg-[#09090b]">
+    <section className="relative min-h-screen flex items-center justify-center py-20 lg:py-24 overflow-hidden bg-[#09090b]">
       {/* Ambient background glows */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#E40101]/15 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute top-10 right-10 w-72 h-72 bg-red-600/10 rounded-full blur-[100px] pointer-events-none" />
@@ -143,12 +143,12 @@ export default function Hero({ onOpenAudit }) {
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#18181b15_1px,transparent_1px),linear-gradient(to_bottom,#18181b15_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-6 items-center">
+      <div className="max-w-7xl xl:max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center">
           {/* Left Column: Headline & Value Proposition */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             {/* Tagline Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/90 border border-zinc-800 text-xs font-semibold text-zinc-300 mb-3 shadow-inner">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/90 border border-zinc-800 text-xs font-semibold text-zinc-300 mb-5 shadow-inner">
               <span className="flex h-2 w-2 rounded-full bg-[#E40101] animate-pulse" />
               <span className="text-[#E40101] font-mono font-bold uppercase tracking-wider">
                 Anti-Agency
@@ -162,7 +162,7 @@ export default function Hero({ onOpenAudit }) {
               ref={headlineRef}
               onMouseMove={handleHeadlineMouseMove}
               onMouseLeave={handleHeadlineMouseLeave}
-              className="relative font-heading text-3xl sm:text-4xl md:text-5xl lg:text-5xl tracking-tight text-white font-bold leading-[1.05] uppercase mb-3 will-change-transform z-20 cursor-default"
+              className="relative font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.5rem] tracking-tight text-white font-bold leading-[1.08] uppercase mb-5 will-change-transform z-20 cursor-default"
               style={{ transformStyle: 'preserve-3d', WebkitTapHighlightColor: 'transparent' }}
             >
               {/* Highlight Overlay */}
@@ -189,12 +189,12 @@ export default function Hero({ onOpenAudit }) {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-sm text-zinc-300 max-w-xl leading-relaxed mb-4 font-normal">
+            <p className="text-sm sm:text-base text-zinc-300 max-w-xl lg:max-w-2xl leading-relaxed mb-6 font-normal">
               Bespoke brand identities and high-performance digital platforms built for ambitious companies across the US, UK, India, Australia & Dubai.
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 mb-4">
+            <div className="flex flex-wrap items-center gap-3.5 sm:gap-4 mb-2 lg:mb-0">
               <button
                 onClick={onOpenAudit}
                 className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#E40101] hover:bg-[#ff1a1a] text-white font-bold text-xs uppercase tracking-wider shadow-xl shadow-[#E40101]/30 hover:shadow-[#E40101]/50 transition-all hover:-translate-y-1 cursor-pointer"
@@ -210,19 +210,17 @@ export default function Hero({ onOpenAudit }) {
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>
-
-
           </div>
 
           {/* Right Column: Hero Enquiry Form Card */}
-          <div className="lg:col-span-5" id="hero-enquiry">
-            <div className="glass-card rounded-2xl p-4 sm:p-5 border border-zinc-800 relative shadow-2xl">
-              <div className="mb-2.5">
-                <div className="flex items-center gap-2 text-[#E40101] font-mono text-[11px] font-semibold uppercase tracking-wider mb-0.5">
+          <div className="lg:col-span-5 w-full" id="hero-enquiry">
+            <div className="glass-card rounded-2xl p-5 sm:p-6 lg:p-7 border border-zinc-800 relative shadow-2xl">
+              <div className="mb-4">
+                <div className="flex items-center gap-2 text-[#E40101] font-mono text-[11px] font-semibold uppercase tracking-wider mb-1">
                   <Zap className="w-3.5 h-3.5 fill-[#E40101]" />
                   Direct Consultation
                 </div>
-                <h3 className="font-heading text-xl text-white font-bold uppercase tracking-wide">
+                <h3 className="font-heading text-xl sm:text-2xl text-white font-bold uppercase tracking-wide">
                   Start Your Project
                 </h3>
               </div>
@@ -245,7 +243,7 @@ export default function Hero({ onOpenAudit }) {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-2.5 -mt-2">
+                <form onSubmit={handleSubmit} className="space-y-3.5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-[11px] font-semibold text-zinc-400 uppercase tracking-wider mb-1">

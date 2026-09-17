@@ -1,4 +1,4 @@
-export const dynamic = "force-static";
+export const revalidate = 0;
 
 export default async function sitemap() {
   const baseUrl = "https://anti-agency.in";
@@ -74,7 +74,7 @@ export default async function sitemap() {
             apikey: key,
             Authorization: `Bearer ${key}`,
           },
-          cache: "force-cache",
+          cache: "no-store",
         }
       );
       if (res.ok) {

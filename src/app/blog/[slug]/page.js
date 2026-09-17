@@ -1,32 +1,6 @@
 import BlogPostClient from "@/components/BlogPostClient";
 
-export async function generateStaticParams() {
-  try {
-    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-    if (url && key) {
-      const res = await fetch(
-        `${url}/rest/v1/blog_posts?select=slug&published=eq.true`,
-        {
-          headers: {
-            apikey: key,
-            Authorization: `Bearer ${key}`,
-          },
-          cache: "force-cache",
-        }
-      );
-      if (res.ok) {
-        const posts = await res.json();
-        if (Array.isArray(posts) && posts.length > 0) {
-          return posts.map((p) => ({ slug: p.slug }));
-        }
-      }
-    }
-  } catch (err) {
-    console.error("Error generating static params for blog:", err);
-  }
-  return [{ slug: "welcome" }];
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -43,7 +17,7 @@ export async function generateMetadata({ params }) {
             apikey: key,
             Authorization: `Bearer ${key}`,
           },
-          cache: "force-cache",
+          cache: "no-store",
         }
       );
 
