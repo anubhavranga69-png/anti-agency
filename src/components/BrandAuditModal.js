@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Sparkles, X, CheckCircle2, ArrowRight } from "lucide-react";
+import { Sparkles, X, CheckCircle2, ArrowRight, AlertCircle } from "lucide-react";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function BrandAuditModal({ isOpen, onClose }) {
   const [step, setStep] = useState(1);
@@ -14,6 +15,8 @@ export default function BrandAuditModal({ isOpen, onClose }) {
     website: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   if (!isOpen) return null;
 
@@ -26,9 +29,44 @@ export default function BrandAuditModal({ isOpen, onClose }) {
     }
   };
 
-  const handleFinalSubmit = (e) => {
+  const handleFinalSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+
+    const messageContent = `Brand Audit Request
+Challenge: ${answers.challenge}
+Revenue: ${answers.revenue}
+Timeline: ${answers.timeline}
+Estimated Score: 74/100`;
+
+    const payload = {
+      name: answers.name,
+      email: answers.email,
+      company: answers.website || null,
+      service: "Brand Audit",
+      message: messageContent,
+    };
+
+    console.log("Diagnostic: Supabase client object keys:", Object.keys(supabase));
+    console.log("Diagnostic: Payload to insert into public.leads:", payload);
+
+    const { error: insertError } = await supabase.from("leads").insert([payload]);
+
+    if (insertError) {
+      console.error("Supabase insert error details:", {
+        message: insertError?.message || "Unknown message",
+        details: insertError?.details || "Unknown details",
+        hint: insertError?.hint || "Unknown hint",
+        code: insertError?.code || "Unknown code",
+        raw: insertError
+      });
+      setError("Something went wrong saving your audit. Please try again.");
+      setLoading(false);
+    } else {
+      setLoading(false);
+      setSubmitted(true);
+    }
   };
 
   return (
@@ -198,11 +236,23 @@ export default function BrandAuditModal({ isOpen, onClose }) {
               </div>
             </div>
 
+            {error && (
+              <div className="flex items-start gap-2 px-3.5 py-2.5 rounded-xl bg-[#E40101]/10 border border-[#E40101]/30 text-[11px] text-red-300">
+                <AlertCircle className="w-3.5 h-3.5 mt-0.5 shrink-0 text-[#E40101]" />
+                <span>{error}</span>
+              </div>
+            )}
+
             <button
               type="submit"
-              className="w-full py-3.5 rounded-xl bg-[#E40101] hover:bg-[#ff1a1a] text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#E40101]/30"
+              disabled={loading}
+              className="w-full py-3.5 flex justify-center items-center rounded-xl bg-[#E40101] hover:bg-[#ff1a1a] text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#E40101]/30 disabled:opacity-50 min-h-[44px]"
             >
-              Get Full Executive Audit Report
+              {loading ? (
+                <span className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent" />
+              ) : (
+                "Get Full Executive Audit Report"
+              )}
             </button>
           </form>
         )}
