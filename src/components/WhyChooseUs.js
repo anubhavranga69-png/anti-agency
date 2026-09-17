@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import {
   ShieldCheck,
   Zap,
@@ -8,170 +8,182 @@ import {
   Layers,
   Sparkles,
   BarChart3,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
 
+const pillars = [
+  {
+    icon: ShieldCheck,
+    number: "01",
+    title: "Strategic Brand-First Approach",
+    description:
+      "Building lasting category authority and customer loyalty instead of short-lived ad hacks.",
+    tag: "Category Authority",
+  },
+  {
+    icon: Code2,
+    number: "02",
+    title: "Bespoke Technical Mastery",
+    description:
+      "Ultra-fast custom Next.js web applications engineered with zero template bloat.",
+    tag: "Custom Architecture",
+  },
+  {
+    icon: Zap,
+    number: "03",
+    title: "AI-Powered Velocity",
+    description:
+      "Scaling asset production speed 10x using custom generative AI workflows.",
+    tag: "10x Production Speed",
+  },
+  {
+    icon: Layers,
+    number: "04",
+    title: "Complete Creative Ecosystem",
+    description:
+      "Brand strategy, custom code, high-end video, and social management under one roof.",
+    tag: "All-in-One Studio",
+  },
+  {
+    icon: Sparkles,
+    number: "05",
+    title: "Obsessive Visual Polish",
+    description:
+      "Meticulous typography pairings, micro-interactions, and high-converting aesthetics.",
+    tag: "Pixel Perfection",
+  },
+  {
+    icon: BarChart3,
+    number: "06",
+    title: "Conversion-Driven ROI",
+    description:
+      "Every creative asset is engineered with clear intent to turn visitors into paying clients.",
+    tag: "Revenue-Focused",
+  },
+];
+
+// Triple to guarantee seamless wrap at any screen width
+const items = [...pillars, ...pillars, ...pillars];
+
+const CARD_W = 320; // px per card including gap
+const SPEED = 0.6;  // px per frame at normal pace
+const HOVER_SPEED = 0.12; // slowed speed on hover
+
 export default function WhyChooseUs() {
-  const sliderRef = useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const isDraggingRef = useRef(false);
+  const trackRef = useRef(null);
+  const xRef = useRef(0);
+  const speedRef = useRef(SPEED);
+  const rafRef = useRef(null);
   const isHoveredRef = useRef(false);
+  const [hoveredIdx, setHoveredIdx] = useState(null);
+
+  const isDraggingRef = useRef(false);
   const startXRef = useRef(0);
-  const scrollLeftRef = useRef(0);
+  const viewportRef = useRef(null);
+  
+  const isWheelingRef = useRef(false);
+  const wheelTimeoutRef = useRef(null);
 
-  const pillars = [
-    {
-      icon: ShieldCheck,
-      number: "01",
-      title: "Strategic Brand-First Approach",
-      description:
-        "Building lasting category authority and customer loyalty instead of short-lived ad hacks.",
-      tag: "Category Authority",
-    },
-    {
-      icon: Code2,
-      number: "02",
-      title: "Bespoke Technical Mastery",
-      description:
-        "Ultra-fast custom Next.js web applications engineered with zero template bloat.",
-      tag: "Custom Architecture",
-    },
-    {
-      icon: Zap,
-      number: "03",
-      title: "AI-Powered Velocity",
-      description:
-        "Scaling asset production speed 10x using custom generative AI workflows.",
-      tag: "10x Production Speed",
-    },
-    {
-      icon: Layers,
-      number: "04",
-      title: "Complete Creative Ecosystem",
-      description:
-        "Brand strategy, custom code, high-end video, and social management under one roof.",
-      tag: "All-in-One Studio",
-    },
-    {
-      icon: Sparkles,
-      number: "05",
-      title: "Obsessive Visual Polish",
-      description:
-        "Meticulous typography pairings, micro-interactions, and high-converting aesthetics.",
-      tag: "Pixel Perfection",
-    },
-    {
-      icon: BarChart3,
-      number: "06",
-      title: "Conversion-Driven ROI",
-      description:
-        "Every creative asset is engineered with clear intent to turn visitors into paying clients.",
-      tag: "Revenue-Focused",
-    },
-  ];
-
-  // Quadruple items to ensure smooth infinite loop and full screen coverage
-  const displayItems = [...pillars, ...pillars, ...pillars, ...pillars];
-
-  // Update refs when states change
-  useEffect(() => {
-    isHoveredRef.current = isHovered;
-  }, [isHovered]);
+  // The single-set width used for the seamless wrap
+  const singleSetW = pillars.length * CARD_W;
 
   useEffect(() => {
-    isDraggingRef.current = isDragging;
-  }, [isDragging]);
+    const track = trackRef.current;
+    if (!track) return;
 
-  // Infinite auto-scroll loop
-  useEffect(() => {
-    const slider = sliderRef.current;
-    if (!slider) return;
+    // start midway so we can scroll left & right without hitting the edge
+    xRef.current = -singleSetW;
+    track.style.transform = `translateX(${xRef.current}px)`;
 
-    let animationFrameId;
-    const speed = 0.8; // smooth constant gliding velocity
+    const animate = () => {
+      // Ease speed toward target
+      const target = isHoveredRef.current ? HOVER_SPEED : SPEED;
+      speedRef.current += (target - speedRef.current) * 0.06;
 
-    const step = () => {
-      if (slider && !isDraggingRef.current && !isHoveredRef.current) {
-        slider.scrollLeft += speed;
-
-        const halfWidth = slider.scrollWidth / 2;
-        if (slider.scrollLeft >= halfWidth) {
-          slider.scrollLeft -= halfWidth;
-        }
+      if (!isDraggingRef.current && !isWheelingRef.current) {
+        xRef.current -= speedRef.current;
       }
-      animationFrameId = requestAnimationFrame(step);
+
+      // Wrap when we've scrolled one full set width
+      if (xRef.current <= -singleSetW * 2) xRef.current += singleSetW;
+      if (xRef.current > -singleSetW) xRef.current -= singleSetW;
+
+      track.style.transform = `translateX(${xRef.current}px)`;
+      rafRef.current = requestAnimationFrame(animate);
     };
 
-    animationFrameId = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(animationFrameId);
+    rafRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [singleSetW]);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    const handleWheel = (e) => {
+      // Determine dominant scrolling direction
+      const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+      const delta = isHorizontal ? e.deltaX : e.deltaY;
+
+      if (Math.abs(delta) > 0) {
+        e.preventDefault(); // prevent native scrolling
+      }
+
+      xRef.current -= delta;
+      isWheelingRef.current = true;
+
+      if (wheelTimeoutRef.current) clearTimeout(wheelTimeoutRef.current);
+      
+      wheelTimeoutRef.current = setTimeout(() => {
+        isWheelingRef.current = false;
+      }, 150);
+    };
+
+    viewport.addEventListener("wheel", handleWheel, { passive: false });
+    
+    return () => {
+      viewport.removeEventListener("wheel", handleWheel);
+      if (wheelTimeoutRef.current) clearTimeout(wheelTimeoutRef.current);
+    };
   }, []);
 
-  // Handle boundary wraps during manual scrolling/dragging
-  const handleScroll = () => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-
-    const halfWidth = slider.scrollWidth / 2;
-    if (slider.scrollLeft >= halfWidth) {
-      slider.scrollLeft -= halfWidth;
-    } else if (slider.scrollLeft <= 0) {
-      slider.scrollLeft += halfWidth;
+  const handleDragStart = (clientX) => {
+    isDraggingRef.current = true;
+    startXRef.current = clientX;
+    if (viewportRef.current) {
+      viewportRef.current.classList.remove("cursor-grab");
+      viewportRef.current.classList.add("cursor-grabbing");
+    }
+    if (trackRef.current) {
+      trackRef.current.style.pointerEvents = "none";
     }
   };
 
-  // Drag interaction handlers
-  const handleMouseDown = (e) => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-    setIsDragging(true);
-    isDraggingRef.current = true;
-    startXRef.current = e.pageX - slider.offsetLeft;
-    scrollLeftRef.current = slider.scrollLeft;
-  };
-
-  const handleMouseMove = (e) => {
+  const handleDragMove = (clientX) => {
     if (!isDraggingRef.current) return;
-    e.preventDefault();
-    const slider = sliderRef.current;
-    if (!slider) return;
-    const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startXRef.current) * 1.5;
-    slider.scrollLeft = scrollLeftRef.current - walk;
+    const deltaX = clientX - startXRef.current;
+    xRef.current += deltaX;
+    startXRef.current = clientX;
   };
 
-  const handleMouseUp = () => {
-    setIsDragging(false);
+  const handleDragEnd = () => {
     isDraggingRef.current = false;
-  };
-
-  const handleMouseLeave = () => {
-    setIsDragging(false);
-    isDraggingRef.current = false;
-    setIsHovered(false);
-    isHoveredRef.current = false;
-  };
-
-  // Arrow button clicks
-  const handleNavigate = (direction) => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-    const scrollAmount = 360;
-    slider.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth",
-    });
+    if (viewportRef.current) {
+      viewportRef.current.classList.remove("cursor-grabbing");
+      viewportRef.current.classList.add("cursor-grab");
+    }
+    if (trackRef.current) {
+      trackRef.current.style.pointerEvents = "auto";
+    }
   };
 
   return (
     <section className="py-14 relative bg-[#09090b] overflow-hidden border-t border-b border-zinc-900 select-none">
-      {/* Ambient background lighting */}
+      {/* Ambient bg */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#E40101]/10 blur-[130px] rounded-full pointer-events-none" />
       <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-red-600/5 blur-[120px] rounded-full pointer-events-none" />
 
-      {/* Header Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-8">
+      {/* Header */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-semibold text-[#E40101] uppercase tracking-wider mb-3">
@@ -183,89 +195,109 @@ export default function WhyChooseUs() {
               <span className="text-[#E40101]">Engineered for Distinction.</span>
             </h2>
           </div>
-
-          {/* Drag Hint & Navigation Controls */}
-          <div className="flex items-center gap-3">
-            <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider hidden sm:inline-block mr-2">
-              ← Drag or Scroll →
-            </span>
-            <button
-              onClick={() => handleNavigate("left")}
-              aria-label="Previous card"
-              className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:border-[#E40101] hover:bg-zinc-800 transition-all cursor-pointer shadow-lg"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => handleNavigate("right")}
-              aria-label="Next card"
-              className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:border-[#E40101] hover:bg-zinc-800 transition-all cursor-pointer shadow-lg"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
+          <p className="text-zinc-500 text-xs font-mono uppercase tracking-widest hidden sm:block">
+            Hover to inspect · Auto-gliding
+          </p>
         </div>
       </div>
 
-      {/* Interactive Carousel Track: Auto-moves, Draggable & Scrollable */}
-      <div className="relative w-full overflow-hidden">
-        {/* Left & Right gradient edge fades */}
-        <div className="absolute top-0 bottom-0 left-0 w-12 sm:w-28 bg-gradient-to-r from-[#09090b] to-transparent z-20 pointer-events-none" />
-        <div className="absolute top-0 bottom-0 right-0 w-12 sm:w-28 bg-gradient-to-l from-[#09090b] to-transparent z-20 pointer-events-none" />
+      {/* Carousel viewport */}
+      <div
+        ref={viewportRef}
+        className="relative w-full overflow-hidden cursor-grab"
+        style={{ touchAction: "pan-y" }}
+        onMouseEnter={() => { isHoveredRef.current = true; }}
+        onMouseLeave={() => { 
+          isHoveredRef.current = false; 
+          setHoveredIdx(null);
+          handleDragEnd();
+        }}
+        onMouseDown={(e) => handleDragStart(e.clientX)}
+        onMouseMove={(e) => handleDragMove(e.clientX)}
+        onMouseUp={handleDragEnd}
+        onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
+        onTouchMove={(e) => handleDragMove(e.touches[0].clientX)}
+        onTouchEnd={handleDragEnd}
+      >
+        {/* Edge fades */}
+        <div className="absolute top-0 bottom-0 left-0 w-20 sm:w-36 bg-gradient-to-r from-[#09090b] to-transparent z-20 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 right-0 w-20 sm:w-36 bg-gradient-to-l from-[#09090b] to-transparent z-20 pointer-events-none" />
 
+        {/* Moving track — no overflow-x, pure transform */}
         <div
-          ref={sliderRef}
-          onScroll={handleScroll}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={handleMouseLeave}
-          className={`flex gap-5 px-4 sm:px-8 overflow-x-auto no-scrollbar py-3 ${
-            isDragging ? "cursor-grabbing" : "cursor-grab"
-          }`}
-          style={{
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-            WebkitOverflowScrolling: "touch",
-          }}
+          ref={trackRef}
+          className="flex will-change-transform"
+          style={{ gap: "20px", paddingBlock: "12px", pointerEvents: "auto" }}
         >
-          {displayItems.map((pillar, idx) => {
+          {items.map((pillar, idx) => {
             const IconComp = pillar.icon;
+            const isHov = hoveredIdx === idx;
             return (
               <div
                 key={idx}
-                className="w-[270px] min-[360px]:w-[300px] sm:w-[340px] shrink-0 glass-card rounded-2xl p-5 sm:p-6 border border-zinc-800/90 hover:border-[#E40101]/60 transition-all duration-300 group flex flex-col justify-between min-h-[240px] sm:min-h-[250px] relative overflow-hidden bg-gradient-to-b from-zinc-900/60 to-zinc-950/90 shadow-xl select-none"
+                onMouseEnter={() => setHoveredIdx(idx)}
+                onMouseLeave={() => setHoveredIdx(null)}
+                style={{
+                  width: `${CARD_W - 20}px`,
+                  flexShrink: 0,
+                  transform: isHov
+                    ? "scale(1.04) translateY(-6px) rotate(-0.5deg)"
+                    : "scale(1) translateY(0px) rotate(0deg)",
+                  transition: "transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease, border-color 0.3s ease",
+                  boxShadow: isHov
+                    ? "0 24px 60px rgba(228,1,1,0.18), 0 0 0 1px rgba(228,1,1,0.35)"
+                    : "0 4px 24px rgba(0,0,0,0.5)",
+                }}
+                className="glass-card rounded-2xl p-6 border border-zinc-800/90 flex flex-col justify-between min-h-[240px] relative overflow-hidden bg-gradient-to-b from-zinc-900/60 to-zinc-950/90 cursor-pointer"
               >
-                {/* Ambient hover flare */}
-                <div className="absolute top-0 right-0 w-28 h-28 bg-[#E40101]/5 blur-[35px] group-hover:bg-[#E40101]/15 transition-colors pointer-events-none" />
+                {/* Hover flare */}
+                <div
+                  className="absolute top-0 right-0 w-32 h-32 rounded-full blur-[50px] pointer-events-none transition-opacity duration-500"
+                  style={{ background: "#E40101", opacity: isHov ? 0.12 : 0.04 }}
+                />
 
                 <div>
-                  {/* Top Row: Icon & Number Badge */}
-                  <div className="flex items-center justify-between mb-4 pointer-events-none">
-                    <div className="w-10 h-10 rounded-xl bg-zinc-900/90 border border-zinc-800 flex items-center justify-center text-[#E40101] group-hover:scale-110 group-hover:rotate-6 group-hover:bg-[#E40101] group-hover:text-white transition-all duration-300 shadow-md">
+                  {/* Icon + Number */}
+                  <div className="flex items-center justify-between mb-5">
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-400"
+                      style={{
+                        background: isHov ? "#E40101" : "rgba(39,39,42,0.9)",
+                        border: isHov ? "1px solid #E40101" : "1px solid rgba(63,63,70,1)",
+                        color: isHov ? "#fff" : "#E40101",
+                        transform: isHov ? "rotate(6deg) scale(1.1)" : "rotate(0deg) scale(1)",
+                        transition: "all 0.4s cubic-bezier(0.22,1,0.36,1)",
+                      }}
+                    >
                       <IconComp className="w-5 h-5" />
                     </div>
-                    <span className="font-mono text-xs font-bold text-zinc-600 group-hover:text-[#E40101] transition-colors">
-                      {pillar.number}
-                    </span>
                   </div>
 
-                  {/* Card Title */}
-                  <h3 className="font-heading text-base text-white font-bold uppercase tracking-tight mb-2 leading-snug group-hover:text-white transition-colors pointer-events-none">
+                  {/* Title */}
+                  <h3
+                    className="font-heading text-base font-bold uppercase tracking-tight mb-2 leading-snug transition-colors duration-300"
+                    style={{ color: "#fff" }}
+                  >
                     {pillar.title}
                   </h3>
 
-                  {/* Card Description */}
-                  <p className="text-xs text-zinc-400 leading-relaxed font-normal pointer-events-none">
+                  {/* Description */}
+                  <p className="text-xs text-zinc-400 leading-relaxed">
                     {pillar.description}
                   </p>
                 </div>
 
-                {/* Bottom Tag */}
-                <div className="pt-3.5 border-t border-zinc-800/80 mt-4 flex items-center pointer-events-none">
-                  <span className="text-[10px] font-mono font-medium text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#E40101] group-hover:animate-ping" />
+                {/* Bottom tag */}
+                <div className="pt-4 border-t border-zinc-800/80 mt-5 flex items-center">
+                  <span className="text-[10px] font-mono font-medium uppercase tracking-wider flex items-center gap-2" style={{ color: isHov ? "#E40101" : "#71717a" }}>
+                    <span
+                      className="w-1.5 h-1.5 rounded-full"
+                      style={{
+                        background: "#E40101",
+                        boxShadow: isHov ? "0 0 6px #E40101" : "none",
+                        transition: "box-shadow 0.3s",
+                      }}
+                    />
                     {pillar.tag}
                   </span>
                 </div>

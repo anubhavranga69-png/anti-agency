@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   ArrowRight,
   CheckCircle2,
@@ -24,6 +24,78 @@ export default function Hero({ onOpenAudit }) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  // Headline interaction refs
+  const headlineRef = useRef(null);
+  const rafRef = useRef(null);
+  const target = useRef({ x: 0, y: 0, opacity: 0, lightX: 0, lightY: 0 });
+  const current = useRef({ x: 0, y: 0, opacity: 0, lightX: 0, lightY: 0 });
+
+  useEffect(() => {
+    const el = headlineRef.current;
+    if (!el) return;
+
+    // Respect reduced motion
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    const animate = () => {
+      // Smooth lerping
+      current.current.x += (target.current.x - current.current.x) * 0.08;
+      current.current.y += (target.current.y - current.current.y) * 0.08;
+      current.current.opacity += (target.current.opacity - current.current.opacity) * 0.1;
+      current.current.lightX += (target.current.lightX - current.current.lightX) * 0.15;
+      current.current.lightY += (target.current.lightY - current.current.lightY) * 0.15;
+
+      const { x, y, opacity, lightX, lightY } = current.current;
+
+      const rotateX = y * -2;
+      const rotateY = x * 2;
+      const translateX = x * -6;
+      const translateY = y * -6;
+
+      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translate3d(${translateX}px, ${translateY}px, 0)`;
+      el.style.setProperty("--light-opacity", opacity.toFixed(2));
+      el.style.setProperty("--light-x", `${lightX.toFixed(2)}px`);
+      el.style.setProperty("--light-y", `${lightY.toFixed(2)}px`);
+
+      rafRef.current = requestAnimationFrame(animate);
+    };
+
+    animate();
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
+  const handleHeadlineMouseMove = (e) => {
+    const el = headlineRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const normalizedX = (x / rect.width) * 2 - 1;
+    const normalizedY = (y / rect.height) * 2 - 1;
+
+    target.current = {
+      x: normalizedX,
+      y: normalizedY,
+      opacity: 1,
+      lightX: x,
+      lightY: y,
+    };
+  };
+
+  const handleHeadlineMouseLeave = () => {
+    target.current = {
+      x: 0,
+      y: 0,
+      opacity: 0,
+      lightX: target.current.lightX,
+      lightY: target.current.lightY,
+    };
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -86,14 +158,33 @@ export default function Hero({ onOpenAudit }) {
             </div>
 
             {/* Main Title */}
-            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-5xl tracking-tight text-white font-bold leading-[1.05] uppercase mb-3">
-              We Don't Just <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-[#E40101]">
-                Market Brands.
-              </span>{" "}
-              <br />
-              <span className="underline decoration-[#E40101] underline-offset-4">
-                We Build Them.
+            <h1 
+              ref={headlineRef}
+              onMouseMove={handleHeadlineMouseMove}
+              onMouseLeave={handleHeadlineMouseLeave}
+              className="relative font-heading text-3xl sm:text-4xl md:text-5xl lg:text-5xl tracking-tight text-white font-bold leading-[1.05] uppercase mb-3 will-change-transform z-20 cursor-default"
+              style={{ transformStyle: 'preserve-3d', WebkitTapHighlightColor: 'transparent' }}
+            >
+              {/* Highlight Overlay */}
+              <div 
+                className="absolute inset-[-20px] pointer-events-none rounded-2xl mix-blend-color-dodge hidden sm:block"
+                style={{
+                  background: 'radial-gradient(circle 140px at var(--light-x, 50%) var(--light-y, 50%), rgba(255,255,255,0.15), transparent 70%)',
+                  opacity: 'var(--light-opacity, 0)',
+                  transform: 'translateZ(10px)',
+                  transition: 'opacity 0.2s ease',
+                }}
+              />
+              
+              <span className="block" style={{ transform: 'translateZ(20px)' }}>
+                We Don't Just <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-[#E40101]">
+                  Market Brands.
+                </span>{" "}
+                <br />
+                <span className="underline decoration-[#E40101] underline-offset-4">
+                  We Build Them.
+                </span>
               </span>
             </h1>
 

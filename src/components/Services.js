@@ -154,7 +154,7 @@ export default function Services({ onOpenAudit }) {
         </div>
 
         {/* Services Grid */}
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
           initial="hidden"
           whileInView="visible"
@@ -166,7 +166,7 @@ export default function Services({ onOpenAudit }) {
         >
           {services.map((service, index) => {
             const IconComp = service.icon;
-            
+
             // Bento Grid Logic: Make the first item span 2 columns on large screens
             const isLargeCard = index === 0;
             const gridClass = isLargeCard ? "lg:col-span-2 md:col-span-2" : "col-span-1";
@@ -176,9 +176,9 @@ export default function Services({ onOpenAudit }) {
                 key={service.id}
                 variants={{
                   hidden: { opacity: 0, y: 30, scale: 0.95 },
-                  visible: { 
-                    opacity: 1, 
-                    y: 0, 
+                  visible: {
+                    opacity: 1,
+                    y: 0,
                     scale: 1,
                     transition: { type: "spring", stiffness: 100, damping: 20 }
                   }
@@ -272,7 +272,7 @@ export default function Services({ onOpenAudit }) {
 
             <div className="bg-zinc-900/80 rounded-2xl p-5 border border-zinc-800 mb-6">
               <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">
-                Key Deliverables & Capabilities:
+                Key Deliverables &amp; Capabilities:
               </h4>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {selectedService.deliverables.map((item, idx) => (

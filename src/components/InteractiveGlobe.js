@@ -55,6 +55,9 @@ export default function InteractiveGlobe({ activeRegion = "usa" }) {
 
     rot.current.targetYaw   = tYaw;
     rot.current.targetPitch = Math.max(-0.65, Math.min(0.65, tPitch));
+    // Immediately set current rotation to target for smooth transition
+    rot.current.yaw = tYaw;
+    rot.current.pitch = Math.max(-0.65, Math.min(0.65, tPitch));
     autoRotate.current = false;
 
     clearTimeout(autoTimer.current);
@@ -241,8 +244,8 @@ export default function InteractiveGlobe({ activeRegion = "usa" }) {
           rot.current.yaw += 0.0025;
           rot.current.targetYaw = rot.current.yaw;
         } else {
-          rot.current.yaw   = lerpAngle(rot.current.yaw,   rot.current.targetYaw,   0.04);
-          rot.current.pitch = lerpAngle(rot.current.pitch, rot.current.targetPitch, 0.04);
+          rot.current.yaw   = lerpAngle(rot.current.yaw,   rot.current.targetYaw,   0.12);
+          rot.current.pitch = lerpAngle(rot.current.pitch, rot.current.targetPitch, 0.12);
         }
       }
 

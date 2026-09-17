@@ -133,7 +133,7 @@ export default function BlogIndexPage() {
         </section>
 
         {/* Filter & Search Bar */}
-        <section className="py-8 border-b border-zinc-800/40 sticky top-16 z-20 bg-[#09090b]/80 backdrop-blur-xl">
+        <section className="py-8 border-b border-zinc-800/40 bg-[#09090b]/80 backdrop-blur-xl">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
               {/* Category Pills */}

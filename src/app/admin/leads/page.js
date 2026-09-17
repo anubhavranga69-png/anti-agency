@@ -110,11 +110,7 @@ export default function AdminLeadsPage() {
 
       setLeads(data || []);
 
-      // If a lead is currently open in modal, keep its data fresh
-      if (selectedLead) {
-        const updated = (data || []).find((l) => l.id === selectedLead.id);
-        if (updated) setSelectedLead(updated);
-      }
+
     } catch (err) {
       console.error("Error fetching leads:", err);
       setError(

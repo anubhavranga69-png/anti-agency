@@ -52,7 +52,7 @@ export default function Process() {
             return (
               <div
                 key={idx}
-                className="glass-card rounded-2xl p-5 border border-zinc-800 flex flex-col justify-between relative group hover:border-[#E40101]/40 transition-all"
+                className="glass-card rounded-2xl p-5 border border-zinc-800 flex flex-col justify-between relative group transition-all duration-300 ease-out sm:hover:scale-[1.06] sm:hover:-translate-y-1 sm:hover:z-20 sm:hover:border-[#E40101]/60 sm:hover:shadow-[0_12px_40px_-10px_rgba(228,1,1,0.2)]"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">

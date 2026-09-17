@@ -135,12 +135,13 @@ export default function Navbar({ onOpenAudit }) {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed inset-0 z-40 bg-zinc-950/95 backdrop-blur-2xl flex flex-col justify-between px-6 pt-24 pb-8 overflow-y-auto w-full"
-          >
+  initial={{ opacity: 0, y: -20 }}
+  animate={{ opacity: 1, y: 0 }}
+  exit={{ opacity: 0, y: -20 }}
+  transition={{ duration: 0.2, ease: "easeOut" }}
+  className="fixed inset-0 z-40 bg-zinc-950/95 backdrop-blur-2xl flex flex-col justify-between px-6 pt-24 pb-8 overflow-y-auto w-full"
+  onClick={() => setMobileMenuOpen(false)}
+>
             <nav className="flex flex-col space-y-3 w-full">
               {navLinks.map((link) => (
                 <div key={link.name} className="flex flex-col">
