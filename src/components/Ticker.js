@@ -24,7 +24,7 @@ export default function Ticker() {
             <span className="font-heading text-xs sm:text-sm font-bold tracking-widest text-zinc-300 hover:text-white transition-colors uppercase">
               {text}
             </span>
-            <Sparkles className="w-3 h-3 text-[#E40101] shrink-0 fill-[#E40101]" />
+            <Sparkles className="w-3 h-3 text-[#7c93a3] shrink-0 fill-[#7c93a3]" />
           </div>
         ))}
       </div>

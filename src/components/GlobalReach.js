@@ -86,19 +86,19 @@ export default function GlobalReach() {
   return (
     <section id="global" className="py-12 relative bg-[#09090b] overflow-hidden">
       {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#E40101]/5 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#7c93a3]/5 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* ── Header ── */}
         <div className="text-center max-w-3xl mx-auto mb-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-semibold text-[#E40101] uppercase tracking-wider mb-3">
-            <Globe2 className="w-3.5 h-3.5 text-[#E40101]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-zinc-900 border border-zinc-800 text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-3">
+            <Globe2 className="w-3.5 h-3.5 text-[#7c93a3]" />
             Global Footprint
           </div>
           <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl text-white font-bold uppercase tracking-tight leading-tight">
             Building Iconic Brands Across{" "}
-            <span className="text-[#E40101]">5 Key Continents</span>
+            <span className="text-[#7c93a3]">5 Key Continents</span>
           </h2>
           <p className="text-zinc-400 text-xs sm:text-sm mt-2.5 max-w-lg mx-auto leading-relaxed">
             Tailored brand positioning and bespoke visual architecture across international markets.
@@ -111,9 +111,9 @@ export default function GlobalReach() {
             <button
               key={region.id}
               onClick={() => handleRegionSelect(region.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-md text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                 activeRegion === region.id
-                  ? "bg-[#E40101] text-white shadow-lg shadow-[#E40101]/30 scale-105"
+                  ? "bg-[#7c93a3] text-white shadow-lg shadow-[#7c93a3]/20 scale-105"
                   : "bg-zinc-900 text-zinc-400 hover:text-white hover:bg-zinc-800 border border-zinc-800"
               }`}
             >
@@ -127,7 +127,7 @@ export default function GlobalReach() {
         <div className="sm:hidden mb-5 relative">
           <button
             onClick={() => setMobileOpen((p) => !p)}
-            className="w-full flex items-center justify-between px-4 py-3 rounded-2xl bg-zinc-900 border border-zinc-800 text-sm font-bold uppercase tracking-wider text-white"
+            className="w-full flex items-center justify-between px-4 py-3 rounded-md bg-zinc-900 border border-zinc-800 text-sm font-bold uppercase tracking-wider text-white"
           >
             <span className="flex items-center gap-2">
               <span className="text-lg">{activeData?.flag}</span>
@@ -141,14 +141,14 @@ export default function GlobalReach() {
           </button>
 
           {mobileOpen && (
-            <div className="absolute top-full left-0 right-0 mt-2 z-50 bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="absolute top-full left-0 right-0 mt-2 z-50 bg-zinc-900 border border-zinc-800 rounded-md overflow-hidden shadow-2xl">
               {regions.map((region) => (
                 <button
                   key={region.id}
                   onClick={() => handleRegionSelect(region.id)}
                   className={`w-full flex items-center gap-3 px-4 py-3 text-sm font-semibold uppercase tracking-wider transition-colors text-left ${
                     activeRegion === region.id
-                      ? "bg-[#E40101]/15 text-[#E40101] border-l-2 border-[#E40101]"
+                      ? "bg-[#7c93a3]/15 text-[#7c93a3] border-l-2 border-[#7c93a3]"
                       : "text-zinc-300 hover:bg-zinc-800"
                   }`}
                 >
@@ -162,7 +162,7 @@ export default function GlobalReach() {
 
         {/* ── Main Card ── */}
         {activeData && (
-          <div className="glass-card rounded-3xl border border-zinc-800 max-w-5xl mx-auto shadow-2xl overflow-hidden">
+          <div className="glass-card rounded-md border border-zinc-800 max-w-5xl mx-auto shadow-2xl overflow-hidden">
             {/* Globe on top for mobile, side for desktop */}
             <div className="flex flex-col lg:grid lg:grid-cols-12">
 
@@ -186,7 +186,7 @@ export default function GlobalReach() {
               >
                 {/* Ambient glow */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-                  <div className="w-[220px] h-[220px] bg-[#E40101]/10 rounded-full blur-[80px]" />
+                  <div className="w-[220px] h-[220px] bg-[#7c93a3]/10 rounded-full blur-[80px]" />
                 </div>
                 <InteractiveGlobe activeRegion={activeRegion} />
               </div>
@@ -200,7 +200,7 @@ export default function GlobalReach() {
                     <h3 className="font-heading text-xl sm:text-2xl lg:text-3xl text-white font-bold uppercase tracking-wide leading-tight">
                       {activeData.country}
                     </h3>
-                    <p className="text-[11px] font-mono text-[#E40101] uppercase tracking-wider mt-0.5">
+                    <p className="text-[11px] font-mono text-[#7c93a3] uppercase tracking-wider mt-0.5">
                       Regional Strategy
                     </p>
                   </div>
@@ -208,7 +208,7 @@ export default function GlobalReach() {
 
                 {/* Focus area */}
                 <div className="mb-4">
-                  <p className="text-sm text-zinc-200 font-medium bg-zinc-900/90 border border-zinc-800 px-3 py-2.5 rounded-xl leading-relaxed">
+                  <p className="text-sm text-zinc-200 font-medium bg-zinc-900/90 border border-zinc-800 px-3 py-2.5 rounded-sm leading-relaxed">
                     {activeData.focus}
                   </p>
                 </div>
@@ -217,23 +217,23 @@ export default function GlobalReach() {
                 <ul className="space-y-2 mb-5">
                   {activeData.highlights.map((h, i) => (
                     <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-300">
-                      <CheckCircle2 className="w-4 h-4 text-[#E40101] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-[#7c93a3] shrink-0 mt-0.5" />
                       <span>{h}</span>
                     </li>
                   ))}
                 </ul>
 
                 {/* Cities + CTA */}
-                <div className="bg-zinc-900/80 rounded-2xl p-4 border border-zinc-800/80">
+                <div className="bg-zinc-900/80 rounded-md p-4 border border-zinc-800/80">
                   <div className="flex items-center gap-2 text-[11px] font-bold text-white uppercase tracking-wider mb-3">
-                    <MapPin className="w-3.5 h-3.5 text-[#E40101]" />
+                    <MapPin className="w-3.5 h-3.5 text-[#7c93a3]" />
                     Hub Cities Served
                   </div>
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {activeData.cities.map((city, cIdx) => (
                       <span
                         key={cIdx}
-                        className="text-[11px] font-mono font-medium px-2.5 py-1 rounded-lg bg-zinc-800 border border-zinc-700/60 text-zinc-200"
+                        className="text-[11px] font-mono font-medium px-2.5 py-1 rounded-sm bg-zinc-800 border border-zinc-700/60 text-zinc-200"
                       >
                         {city}
                       </span>
@@ -241,7 +241,7 @@ export default function GlobalReach() {
                   </div>
                   <a
                     href="#hero-enquiry"
-                    className="block w-full text-center px-6 py-2.5 rounded-full bg-[#E40101] hover:bg-[#ff1a1a] text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-lg shadow-[#E40101]/25"
+                    className="block w-full text-center px-6 py-2.5 rounded-md bg-[#7c93a3] hover:bg-[#6a8292] text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-lg shadow-[#7c93a3]/20"
                   >
                     Consult for {activeData.country}
                   </a>

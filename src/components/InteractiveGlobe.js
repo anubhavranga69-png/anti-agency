@@ -110,7 +110,7 @@ export default function InteractiveGlobe({ activeRegion = "usa" }) {
     sun.position.set(5, 3, 5);
     scene.add(sun);
 
-    const rimLight = new THREE.DirectionalLight(0xe40101, 0.6);
+    const rimLight = new THREE.DirectionalLight(0x7c93a3, 0.6);
     rimLight.position.set(-5, -2, -5);
     scene.add(rimLight);
 
@@ -162,7 +162,7 @@ export default function InteractiveGlobe({ activeRegion = "usa" }) {
         varying vec3 vNormal;
         void main() {
           float intensity = pow(0.72 - dot(vNormal, vec3(0,0,1)), 3.0);
-          gl_FragColor = vec4(0.9, 0.05, 0.05, 1.0) * intensity;
+          gl_FragColor = vec4(0.486, 0.576, 0.639, 1.0) * intensity;
         }
       `,
       side:        THREE.FrontSide,
@@ -196,7 +196,7 @@ export default function InteractiveGlobe({ activeRegion = "usa" }) {
 
       // Outer glow ring
       const ringGeo = new THREE.RingGeometry(0.025, 0.038, 32);
-      const ringMat = new THREE.MeshBasicMaterial({ color: 0xe40101, transparent: true, opacity: 0.7, side: THREE.DoubleSide });
+      const ringMat = new THREE.MeshBasicMaterial({ color: 0x7c93a3, transparent: true, opacity: 0.7, side: THREE.DoubleSide });
       const ring    = new THREE.Mesh(ringGeo, ringMat);
       ring.position.copy(pos);
       ring.lookAt(0, 0, 0);
@@ -206,7 +206,7 @@ export default function InteractiveGlobe({ activeRegion = "usa" }) {
 
       // Outer dot
       const outerGeo = new THREE.SphereGeometry(0.018, 16, 16);
-      const outerMat = new THREE.MeshBasicMaterial({ color: 0xe40101, transparent: true, opacity: isActive ? 1 : 0.7 });
+      const outerMat = new THREE.MeshBasicMaterial({ color: 0x7c93a3, transparent: true, opacity: isActive ? 1 : 0.7 });
       const outer    = new THREE.Mesh(outerGeo, outerMat);
       outer.position.copy(pos);
       outer.scale.setScalar(isActive ? 1.8 : 1.0);

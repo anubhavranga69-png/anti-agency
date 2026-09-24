@@ -38,11 +38,11 @@ export default function Process() {
     <section id="process" className="py-10 relative bg-[#09090b] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-semibold text-[#E40101] uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-zinc-900 border border-zinc-800 text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-3">
             Execution Roadmap
           </div>
           <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl text-white font-bold uppercase tracking-tight">
-            How We Build <span className="text-[#E40101]">Market Leaders</span>
+            How We Build <span className="text-[#7c93a3]">Market Leaders</span>
           </h2>
         </div>
 
@@ -52,14 +52,14 @@ export default function Process() {
             return (
               <div
                 key={idx}
-                className="glass-card rounded-2xl p-5 border border-zinc-800 flex flex-col justify-between relative group transition-all duration-300 ease-out sm:hover:scale-[1.06] sm:hover:-translate-y-1 sm:hover:z-20 sm:hover:border-[#E40101]/60 sm:hover:shadow-[0_12px_40px_-10px_rgba(228,1,1,0.2)]"
+                className="glass-card rounded-md p-5 border border-zinc-800 flex flex-col justify-between relative group transition-all duration-300 ease-out sm:hover:scale-[1.06] sm:hover:-translate-y-1 sm:hover:z-20 sm:hover:border-[#7c93a3]/60 sm:hover:shadow-[0_12px_40px_-10px_rgba(124,147,163,0.15)]"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="font-heading text-2xl font-bold text-[#E40101]">
+                    <span className="font-heading text-2xl font-bold text-[#7c93a3]">
                       {step.number}
                     </span>
-                    <div className="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300">
+                    <div className="w-9 h-9 rounded-md bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300">
                       <IconComp className="w-4 h-4" />
                     </div>
                   </div>

@@ -179,20 +179,20 @@ export default function WhyChooseUs() {
   return (
     <section className="py-14 relative bg-[#09090b] overflow-hidden border-t border-b border-zinc-900 select-none">
       {/* Ambient bg */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#E40101]/10 blur-[130px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-red-600/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#7c93a3]/5 blur-[130px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-slate-400/5 blur-[120px] rounded-full pointer-events-none" />
 
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-semibold text-[#E40101] uppercase tracking-wider mb-3">
-              <Sparkles className="w-3.5 h-3.5 fill-[#E40101]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-zinc-900 border border-zinc-800 text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-3">
+              <Sparkles className="w-3.5 h-3.5 fill-[#7c93a3]" />
               Why Anti-Agency
             </div>
             <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl text-white font-bold uppercase tracking-tight leading-tight">
               Built Different. <br />
-              <span className="text-[#E40101]">Engineered for Distinction.</span>
+              <span className="text-[#7c93a3]">Engineered for Distinction.</span>
             </h2>
           </div>
           <p className="text-zinc-500 text-xs font-mono uppercase tracking-widest hidden sm:block">
@@ -245,26 +245,26 @@ export default function WhyChooseUs() {
                     : "scale(1) translateY(0px) rotate(0deg)",
                   transition: "transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease, border-color 0.3s ease",
                   boxShadow: isHov
-                    ? "0 24px 60px rgba(228,1,1,0.18), 0 0 0 1px rgba(228,1,1,0.35)"
+                    ? "0 24px 60px rgba(124,147,163,0.15), 0 0 0 1px rgba(124,147,163,0.3)"
                     : "0 4px 24px rgba(0,0,0,0.5)",
                 }}
-                className="glass-card rounded-2xl p-6 border border-zinc-800/90 flex flex-col justify-between min-h-[240px] relative overflow-hidden bg-gradient-to-b from-zinc-900/60 to-zinc-950/90 cursor-pointer"
+                className="glass-card rounded-md p-6 border border-zinc-800/90 flex flex-col justify-between min-h-[240px] relative overflow-hidden bg-gradient-to-b from-zinc-900/60 to-zinc-950/90 cursor-pointer"
               >
                 {/* Hover flare */}
                 <div
                   className="absolute top-0 right-0 w-32 h-32 rounded-full blur-[50px] pointer-events-none transition-opacity duration-500"
-                  style={{ background: "#E40101", opacity: isHov ? 0.12 : 0.04 }}
+                  style={{ background: "#7c93a3", opacity: isHov ? 0.12 : 0.04 }}
                 />
 
                 <div>
                   {/* Icon + Number */}
                   <div className="flex items-center justify-between mb-5">
                     <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-400"
+                      className="w-10 h-10 rounded-md flex items-center justify-center transition-all duration-400"
                       style={{
-                        background: isHov ? "#E40101" : "rgba(39,39,42,0.9)",
-                        border: isHov ? "1px solid #E40101" : "1px solid rgba(63,63,70,1)",
-                        color: isHov ? "#fff" : "#E40101",
+                        background: isHov ? "#7c93a3" : "rgba(39,39,42,0.9)",
+                        border: isHov ? "1px solid #7c93a3" : "1px solid rgba(63,63,70,1)",
+                        color: isHov ? "#fff" : "#7c93a3",
                         transform: isHov ? "rotate(6deg) scale(1.1)" : "rotate(0deg) scale(1)",
                         transition: "all 0.4s cubic-bezier(0.22,1,0.36,1)",
                       }}
@@ -289,12 +289,12 @@ export default function WhyChooseUs() {
 
                 {/* Bottom tag */}
                 <div className="pt-4 border-t border-zinc-800/80 mt-5 flex items-center">
-                  <span className="text-[10px] font-mono font-medium uppercase tracking-wider flex items-center gap-2" style={{ color: isHov ? "#E40101" : "#71717a" }}>
+                  <span className="text-[10px] font-mono font-medium uppercase tracking-wider flex items-center gap-2" style={{ color: isHov ? "#7c93a3" : "#71717a" }}>
                     <span
                       className="w-1.5 h-1.5 rounded-full"
                       style={{
-                        background: "#E40101",
-                        boxShadow: isHov ? "0 0 6px #E40101" : "none",
+                        background: "#7c93a3",
+                        boxShadow: isHov ? "0 0 6px #7c93a3" : "none",
                         transition: "box-shadow 0.3s",
                       }}
                     />

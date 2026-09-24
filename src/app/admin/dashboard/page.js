@@ -72,7 +72,7 @@ export default function AdminDashboardPage() {
         if (session && !isAdmin) {
           await supabase.auth.signOut();
         }
-        router.replace("/admin");
+        router.replace("/admin/login");
       } else {
         setUser(sessionUser);
         setCheckingSession(false);
@@ -138,7 +138,7 @@ export default function AdminDashboardPage() {
   async function handleLogout() {
     setLoggingOut(true);
     await supabase.auth.signOut();
-    router.replace("/admin");
+    router.replace("/admin/login");
   }
 
   const formatDate = (isoString) => {

@@ -10,14 +10,14 @@ export default function Footer({ onOpenAudit }) {
       className="relative bg-[#09090b] text-zinc-400 border-t border-zinc-800/80 pt-10 pb-6 overflow-hidden"
     >
       {/* Ambient background glow */}
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#E40101]/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#7c93a3]/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Top CTA Banner */}
-        <div className="glass-card rounded-2xl p-6 sm:p-8 border border-zinc-800 mb-8 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="glass-card rounded-md p-6 sm:p-8 border border-zinc-800 mb-8 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 text-xs font-mono text-[#E40101] uppercase tracking-wider mb-2">
-              <Sparkles className="w-3.5 h-3.5 fill-[#E40101]" />
+            <div className="inline-flex items-center gap-2 text-xs font-mono text-zinc-300 uppercase tracking-wider mb-2">
+              <Sparkles className="w-3.5 h-3.5 fill-[#7c93a3]" />
               Limited Availability • 3-4 Clients / Quarter
             </div>
             <h3 className="font-heading text-xl sm:text-2xl text-white font-bold uppercase tracking-tight">
@@ -30,13 +30,13 @@ export default function Footer({ onOpenAudit }) {
           <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
             <button
               onClick={onOpenAudit}
-              className="px-5 py-2.5 rounded-full bg-zinc-900 hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider border border-zinc-700/80 transition-all text-center cursor-pointer"
+              className="px-5 py-2.5 rounded-md bg-zinc-900 hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider border border-zinc-700/80 transition-all text-center cursor-pointer"
             >
               Book Brand Audit
             </button>
             <a
               href="#hero-enquiry"
-              className="px-5 py-2.5 rounded-full bg-[#E40101] hover:bg-[#ff1a1a] text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#E40101]/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
+              className="px-5 py-2.5 rounded-md bg-[#7c93a3] hover:bg-[#6a8292] text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#7c93a3]/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               Start Enquiry
               <ArrowUpRight className="w-4 h-4" />
@@ -49,11 +49,11 @@ export default function Footer({ onOpenAudit }) {
           {/* Col 1: Brand Info */}
           <div className="md:col-span-5 space-y-4">
             <a href="#" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[#E40101]">
+              <div className="w-10 h-10 rounded-md bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[#7c93a3]">
                 <Image src="/logo.svg" alt="Anti-Agency Logo" width={28} height={28} className="w-7 h-auto" />
               </div>
               <span className="font-heading text-2xl tracking-wider text-white font-bold">
-                ANTI<span className="text-[#E40101]">-AGENCY</span>
+                ANTI<span className="text-[#7c93a3]">-AGENCY</span>
               </span>
             </a>
             <p className="text-xs text-zinc-400 leading-relaxed max-w-sm">
@@ -65,7 +65,7 @@ export default function Footer({ onOpenAudit }) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
-                className="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:border-[#E40101] transition-colors"
+                className="w-9 h-9 rounded-md bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:border-[#7c93a3] transition-colors"
               >
                 {/* Instagram SVG */}
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -77,7 +77,7 @@ export default function Footer({ onOpenAudit }) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
-                className="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:border-[#E40101] transition-colors"
+                className="w-9 h-9 rounded-md bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white hover:border-[#7c93a3] transition-colors"
               >
                 {/* LinkedIn SVG */}
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -107,7 +107,7 @@ export default function Footer({ onOpenAudit }) {
                 <a href="/blog" className="hover:text-white transition-colors">Journal / Insights</a>
               </li>
               <li>
-                <button onClick={onOpenAudit} className="hover:text-[#E40101] transition-colors text-left">
+                <button onClick={onOpenAudit} className="hover:text-[#7c93a3] transition-colors text-left">
                   Instant Brand Health Audit
                 </button>
               </li>
@@ -118,18 +118,18 @@ export default function Footer({ onOpenAudit }) {
           <div className="md:col-span-4 space-y-3">
             <h4 className="font-heading text-lg text-white font-bold uppercase tracking-wider">Direct Contact</h4>
             <div className="space-y-3 text-xs">
-              <a href="mailto:hello@anti-agency.in" className="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/80 border border-zinc-800 hover:border-[#E40101] transition-colors group">
-                <Mail className="w-4 h-4 text-[#E40101]" />
+              <a href="mailto:hello@anti-agency.in" className="flex items-center gap-3 p-3 rounded-md bg-zinc-900/80 border border-zinc-800 hover:border-[#7c93a3] transition-colors group">
+                <Mail className="w-4 h-4 text-[#7c93a3]" />
                 <span className="text-zinc-200 group-hover:text-white font-mono">hello@anti-agency.in</span>
               </a>
 
-              <a href="tel:+919599557064" className="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/80 border border-zinc-800 hover:border-[#E40101] transition-colors group">
-                <Phone className="w-4 h-4 text-[#E40101]" />
+              <a href="tel:+919599557064" className="flex items-center gap-3 p-3 rounded-md bg-zinc-900/80 border border-zinc-800 hover:border-[#7c93a3] transition-colors group">
+                <Phone className="w-4 h-4 text-[#7c93a3]" />
                 <span className="text-zinc-200 group-hover:text-white font-mono">+91 9599557064</span>
               </a>
 
-              <div className="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/80 border border-zinc-800 text-zinc-400">
-                <Globe className="w-4 h-4 text-[#E40101]" />
+              <div className="flex items-center gap-3 p-3 rounded-md bg-zinc-900/80 border border-zinc-800 text-zinc-400">
+                <Globe className="w-4 h-4 text-[#7c93a3]" />
                 <span>Global Hubs: USA • UK • India • Aus • UAE</span>
               </div>
             </div>

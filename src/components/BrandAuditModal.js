@@ -71,19 +71,19 @@ Estimated Score: 74/100`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto">
-      <div className="glass-card rounded-3xl max-w-xl w-full p-6 sm:p-8 border border-zinc-700 relative shadow-2xl max-h-[90vh] overflow-y-auto my-auto">
+      <div className="glass-card rounded-md max-w-xl w-full p-6 sm:p-8 border border-zinc-700 relative shadow-2xl max-h-[90vh] overflow-y-auto my-auto">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 p-2 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-[#E40101] transition-colors cursor-pointer z-10"
+          className="absolute top-6 right-6 p-2 rounded-md bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-[#7c93a3] transition-colors cursor-pointer z-10"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Modal Header */}
         <div className="mb-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-[11px] font-semibold text-[#E40101] uppercase tracking-wider mb-2">
-            <Sparkles className="w-3 h-3 fill-[#E40101]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-[11px] font-semibold text-zinc-300 uppercase tracking-wider mb-2">
+            <Sparkles className="w-3 h-3 fill-[#7c93a3]" />
             Free Brand Health Audit
           </div>
           <h3 className="font-heading text-3xl text-white font-bold uppercase tracking-wide">
@@ -96,9 +96,9 @@ Estimated Score: 74/100`;
 
         {/* Step Progress Bar */}
         {!submitted && (
-          <div className="w-full bg-zinc-900 h-1.5 rounded-full mb-8 overflow-hidden">
+          <div className="w-full bg-zinc-900 h-1.5 rounded-md mb-8 overflow-hidden">
             <div
-              className="bg-[#E40101] h-full transition-all duration-300"
+              className="bg-[#7c93a3] h-full transition-all duration-300"
               style={{ width: `${(step / 4) * 100}%` }}
             />
           </div>
@@ -120,10 +120,10 @@ Estimated Score: 74/100`;
                 <button
                   key={i}
                   onClick={() => handleOptionSelect("challenge", opt)}
-                  className="w-full text-left p-4 rounded-2xl bg-zinc-900/90 border border-zinc-800 hover:border-[#E40101] hover:bg-zinc-800/80 text-xs font-semibold text-zinc-200 transition-all flex items-center justify-between group"
+                  className="w-full text-left p-4 rounded-md bg-zinc-900/90 border border-zinc-800 hover:border-[#7c93a3] hover:bg-zinc-800/80 text-xs font-semibold text-zinc-200 transition-all flex items-center justify-between group"
                 >
                   <span>{opt}</span>
-                  <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:text-[#E40101] group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:text-[#7c93a3] group-hover:translate-x-1 transition-all" />
                 </button>
               ))}
             </div>
@@ -146,10 +146,10 @@ Estimated Score: 74/100`;
                 <button
                   key={i}
                   onClick={() => handleOptionSelect("revenue", opt)}
-                  className="w-full text-left p-4 rounded-2xl bg-zinc-900/90 border border-zinc-800 hover:border-[#E40101] hover:bg-zinc-800/80 text-xs font-semibold text-zinc-200 transition-all flex items-center justify-between group"
+                  className="w-full text-left p-4 rounded-md bg-zinc-900/90 border border-zinc-800 hover:border-[#7c93a3] hover:bg-zinc-800/80 text-xs font-semibold text-zinc-200 transition-all flex items-center justify-between group"
                 >
                   <span>{opt}</span>
-                  <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:text-[#E40101] group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:text-[#7c93a3] group-hover:translate-x-1 transition-all" />
                 </button>
               ))}
             </div>
@@ -172,10 +172,10 @@ Estimated Score: 74/100`;
                 <button
                   key={i}
                   onClick={() => handleOptionSelect("timeline", opt)}
-                  className="w-full text-left p-4 rounded-2xl bg-zinc-900/90 border border-zinc-800 hover:border-[#E40101] hover:bg-zinc-800/80 text-xs font-semibold text-zinc-200 transition-all flex items-center justify-between group"
+                  className="w-full text-left p-4 rounded-md bg-zinc-900/90 border border-zinc-800 hover:border-[#7c93a3] hover:bg-zinc-800/80 text-xs font-semibold text-zinc-200 transition-all flex items-center justify-between group"
                 >
                   <span>{opt}</span>
-                  <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:text-[#E40101] group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:text-[#7c93a3] group-hover:translate-x-1 transition-all" />
                 </button>
               ))}
             </div>
@@ -185,8 +185,8 @@ Estimated Score: 74/100`;
         {/* Step 4: Contact Input & Results */}
         {step === 4 && !submitted && (
           <form onSubmit={handleFinalSubmit} className="space-y-4">
-            <div className="bg-zinc-900/90 p-4 rounded-2xl border border-zinc-800 text-center">
-              <span className="text-xs font-mono text-[#E40101] uppercase tracking-widest block mb-1">
+            <div className="bg-zinc-900/90 p-4 rounded-md border border-zinc-800 text-center">
+              <span className="text-xs font-mono text-[#7c93a3] uppercase tracking-widest block mb-1">
                 Estimated Brand Score Calculated
               </span>
               <span className="font-heading text-5xl font-bold text-white">74 / 100</span>
@@ -206,7 +206,7 @@ Estimated Score: 74/100`;
                   placeholder="Jane Smith"
                   value={answers.name}
                   onChange={(e) => setAnswers({ ...answers, name: e.target.value })}
-                  className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#E40101]"
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-sm px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#7c93a3]"
                 />
               </div>
               <div>
@@ -219,7 +219,7 @@ Estimated Score: 74/100`;
                   placeholder="jane@company.com"
                   value={answers.email}
                   onChange={(e) => setAnswers({ ...answers, email: e.target.value })}
-                  className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#E40101]"
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-sm px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#7c93a3]"
                 />
               </div>
               <div>
@@ -231,14 +231,14 @@ Estimated Score: 74/100`;
                   placeholder="https://yourcompany.com"
                   value={answers.website}
                   onChange={(e) => setAnswers({ ...answers, website: e.target.value })}
-                  className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#E40101]"
+                  className="w-full bg-zinc-900 border border-zinc-800 rounded-sm px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#7c93a3]"
                 />
               </div>
             </div>
 
             {error && (
-              <div className="flex items-start gap-2 px-3.5 py-2.5 rounded-xl bg-[#E40101]/10 border border-[#E40101]/30 text-[11px] text-red-300">
-                <AlertCircle className="w-3.5 h-3.5 mt-0.5 shrink-0 text-[#E40101]" />
+              <div className="flex items-start gap-2 px-3.5 py-2.5 rounded-sm bg-[#7c93a3]/10 border border-[#7c93a3]/30 text-[11px] text-zinc-300">
+                <AlertCircle className="w-3.5 h-3.5 mt-0.5 shrink-0 text-[#7c93a3]" />
                 <span>{error}</span>
               </div>
             )}
@@ -246,7 +246,7 @@ Estimated Score: 74/100`;
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3.5 flex justify-center items-center rounded-xl bg-[#E40101] hover:bg-[#ff1a1a] text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#E40101]/30 disabled:opacity-50 min-h-[44px]"
+              className="w-full py-3.5 flex justify-center items-center rounded-sm bg-[#7c93a3] hover:bg-[#6a8292] text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#7c93a3]/20 disabled:opacity-50 min-h-[44px]"
             >
               {loading ? (
                 <span className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent" />
@@ -269,7 +269,7 @@ Estimated Score: 74/100`;
             </p>
             <button
               onClick={onClose}
-              className="mt-6 px-6 py-2.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-semibold text-white hover:border-[#E40101]"
+              className="mt-6 px-6 py-2.5 rounded-md bg-zinc-900 border border-zinc-800 text-xs font-semibold text-white hover:border-[#7c93a3]"
             >
               Back to Website
             </button>

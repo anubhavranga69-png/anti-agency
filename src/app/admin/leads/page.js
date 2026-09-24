@@ -86,7 +86,7 @@ export default function AdminLeadsPage() {
         if (session && !isAdmin) {
           await supabase.auth.signOut();
         }
-        router.replace("/admin");
+        router.replace("/admin/login");
       } else {
         setUser(sessionUser);
         setCheckingSession(false);
@@ -195,7 +195,7 @@ export default function AdminLeadsPage() {
   // 5. Logout handler
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    router.replace("/admin");
+    router.replace("/admin/login");
   };
 
   const showNotice = (message, type = "success") => {

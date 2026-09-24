@@ -124,19 +124,19 @@ export default function Services({ onOpenAudit }) {
   return (
     <section id="services" className="py-14 relative bg-[#09090b]">
       {/* Glow background */}
-      <div className="absolute top-1/3 right-0 w-[450px] h-[450px] bg-[#E40101]/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 right-0 w-[450px] h-[450px] bg-[#7c93a3]/5 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-semibold text-[#E40101] uppercase tracking-wider mb-3">
-              <Sparkles className="w-3.5 h-3.5 fill-[#E40101]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-zinc-900 border border-zinc-800 text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-3">
+              <Sparkles className="w-3.5 h-3.5 fill-[#7c93a3]" />
               Core Capabilities
             </div>
             <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl text-white font-bold uppercase tracking-tight leading-tight">
               Services Tailored for <br />
-              <span className="text-[#E40101]">Brand Authority</span>
+              <span className="text-[#7c93a3]">Brand Authority</span>
             </h2>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">
@@ -145,10 +145,10 @@ export default function Services({ onOpenAudit }) {
             </p>
             <a
               href="/services"
-              className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-zinc-300 hover:text-white bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 px-4 py-2.5 rounded-full whitespace-nowrap self-start sm:self-auto transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-zinc-300 hover:text-white bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 px-4 py-2.5 rounded-md whitespace-nowrap self-start sm:self-auto transition-colors"
             >
               All Services
-              <ArrowUpRight className="w-3.5 h-3.5 text-[#E40101]" />
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#7c93a3]" />
             </a>
           </div>
         </div>
@@ -183,25 +183,25 @@ export default function Services({ onOpenAudit }) {
                     transition: { type: "spring", stiffness: 100, damping: 20 }
                   }
                 }}
-                className={`glass-card glass-card-hover rounded-2xl p-6 md:p-8 border border-zinc-800/90 flex flex-col justify-between group relative overflow-hidden ${gridClass}`}
+                className={`glass-card glass-card-hover rounded-md p-6 md:p-8 border border-zinc-800/90 flex flex-col justify-between group relative overflow-hidden ${gridClass}`}
               >
                 {/* Background Accent on Hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#E40101]/0 to-[#E40101]/0 group-hover:from-[#E40101]/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#7c93a3]/0 to-[#7c93a3]/0 group-hover:from-[#7c93a3]/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
 
                 {/* Number Badge & Icon */}
                 <div className="relative z-10 flex flex-col h-full justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-6">
-                      <div className="w-12 h-12 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[#E40101] group-hover:bg-[#E40101] group-hover:text-white group-hover:shadow-[0_0_20px_rgba(228,1,1,0.4)] transition-all duration-300 group-hover:scale-110">
+                      <div className="w-12 h-12 rounded-md bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[#7c93a3] group-hover:bg-[#7c93a3] group-hover:text-white group-hover:shadow-[0_0_20px_rgba(124,147,163,0.3)] transition-all duration-300 group-hover:scale-110">
                         <IconComp className="w-6 h-6" />
                       </div>
-                      <span className="font-heading text-3xl font-bold text-zinc-800 group-hover:text-[#E40101]/20 transition-colors">
+                      <span className="font-heading text-3xl font-bold text-zinc-800 group-hover:text-[#7c93a3]/20 transition-colors">
                         {service.number}
                       </span>
                     </div>
 
                     <a href={`/services/${service.slug}`} className="block">
-                      <h3 className={`font-heading ${isLargeCard ? 'text-2xl md:text-3xl' : 'text-xl'} text-white font-bold uppercase tracking-wide mb-3 group-hover:text-[#E40101] transition-colors`}>
+                      <h3 className={`font-heading ${isLargeCard ? 'text-2xl md:text-3xl' : 'text-xl'} text-white font-bold uppercase tracking-wide mb-3 group-hover:text-[#7c93a3] transition-colors`}>
                         {service.title}
                       </h3>
                     </a>
@@ -227,15 +227,15 @@ export default function Services({ onOpenAudit }) {
                       onClick={() => setSelectedService(service)}
                       className="text-xs font-semibold text-zinc-400 hover:text-white uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer group/btn"
                     >
-                      <Sparkles className="w-3.5 h-3.5 group-hover/btn:text-[#E40101] transition-colors" />
+                      <Sparkles className="w-3.5 h-3.5 group-hover/btn:text-[#7c93a3] transition-colors" />
                       Quick Preview
                     </button>
                     <a
                       href={`/services/${service.slug}`}
-                      className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5 group-hover:text-[#E40101] transition-colors"
+                      className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5 group-hover:text-[#7c93a3] transition-colors"
                     >
                       Details
-                      <ArrowUpRight className="w-4 h-4 text-[#E40101] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      <ArrowUpRight className="w-4 h-4 text-[#7c93a3] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </a>
                   </div>
                 </div>
@@ -248,15 +248,15 @@ export default function Services({ onOpenAudit }) {
       {/* Service Detail Modal */}
       {selectedService && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="glass-card rounded-3xl max-w-2xl w-full p-6 sm:p-8 border border-zinc-700 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+          <div className="glass-card rounded-lg max-w-2xl w-full p-6 sm:p-8 border border-zinc-700 relative shadow-2xl max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setSelectedService(null)}
-              className="absolute top-6 right-6 p-2 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-[#E40101]"
+              className="absolute top-6 right-6 p-2 rounded-md bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-[#7c93a3]"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="flex items-center gap-3 text-[#E40101] font-mono text-xs font-bold uppercase tracking-wider mb-2">
+            <div className="flex items-center gap-3 text-[#7c93a3] font-mono text-xs font-bold uppercase tracking-wider mb-2">
               <span>Service Details</span>
               <span>•</span>
               <span>{selectedService.number}</span>
@@ -277,7 +277,7 @@ export default function Services({ onOpenAudit }) {
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {selectedService.deliverables.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-2 text-xs text-zinc-300">
-                    <CheckCircle2 className="w-4 h-4 text-[#E40101] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#7c93a3] shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -291,19 +291,19 @@ export default function Services({ onOpenAudit }) {
                 className="text-xs font-bold uppercase tracking-wider text-zinc-300 hover:text-white flex items-center gap-1"
               >
                 View Full Service Page
-                <ArrowUpRight className="w-3.5 h-3.5 text-[#E40101]" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#7c93a3]" />
               </a>
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setSelectedService(null)}
-                  className="px-4 py-2 rounded-full text-xs font-semibold text-zinc-400 hover:text-white uppercase"
+                  className="px-4 py-2 rounded-md text-xs font-semibold text-zinc-400 hover:text-white uppercase"
                 >
                   Close
                 </button>
                 <a
                   href="/#hero-enquiry"
                   onClick={() => setSelectedService(null)}
-                  className="px-5 py-2 rounded-full bg-[#E40101] text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#E40101]/30 hover:bg-[#ff1a1a]"
+                  className="px-5 py-2 rounded-md bg-[#7c93a3] text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#7c93a3]/30 hover:bg-[#6a8292]"
                 >
                   Inquire
                 </a>

@@ -84,7 +84,7 @@ export default function AdminBlogPage() {
         if (session && !isAdmin) {
           await supabase.auth.signOut();
         }
-        router.replace("/admin");
+        router.replace("/admin/login");
       } else {
         setUser(sessionUser);
         setCheckingSession(false);
@@ -437,7 +437,7 @@ export default function AdminBlogPage() {
   // 8. Logout
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    router.replace("/admin");
+    router.replace("/admin/login");
   };
 
   // Metrics

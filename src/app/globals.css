@@ -2,10 +2,10 @@
 
 @layer base {
   :root {
-    --background: #09090b;
+    --background: #111111;
     --foreground: #f4f4f5;
-    --brand-red: #E40101;
-    --brand-red-hover: #ff1a1a;
+    --brand-blue: #7c93a3;
+    --brand-blue-hover: #6a8292;
   }
 }
 
@@ -27,8 +27,8 @@ html {
 
 /* Adjust glass-card border for classy look */
 .glass-card {
-  background: rgba(28, 28, 34, 0.8);
-  border: 1px solid rgba(228, 1, 1, 0.2);
+  background: rgba(24, 24, 27, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 
@@ -46,20 +46,20 @@ html {
 
 .glass-card-hover:hover {
   background: rgba(28, 28, 35, 0.85);
-  border-color: rgba(228, 1, 1, 0.35);
-  box-shadow: 0 12px 40px -10px rgba(228, 1, 1, 0.18);
-  transform: translateY(-4px);
+  border-color: rgba(124, 147, 163, 0.35);
+  box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
 }
 
-/* Crimson Glow Text & Gradient */
-.text-crimson-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #E40101 100%);
+/* Subtle Blue Gradient */
+.text-subtle-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #7c93a3 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.red-glow {
-  box-shadow: 0 0 35px -5px rgba(228, 1, 1, 0.4);
+.subtle-glow {
+  box-shadow: 0 0 25px -5px rgba(124, 147, 163, 0.2);
 }
 
 /* Infinite Marquee Animation */
@@ -90,7 +90,7 @@ html {
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #E40101;
+  background: #7c93a3;
 }
 
 /* 3D Flip Card Utilities */

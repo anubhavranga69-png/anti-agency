@@ -136,9 +136,9 @@ export default function Hero({ onOpenAudit }) {
   return (
     <section className="relative min-h-screen flex items-center justify-center py-20 lg:py-24 overflow-hidden bg-[#09090b]">
       {/* Ambient background glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#E40101]/15 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-10 right-10 w-72 h-72 bg-red-600/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#09090b] to-transparent pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#7c93a3]/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-10 right-10 w-72 h-72 bg-slate-400/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#111111] to-transparent pointer-events-none" />
 
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#18181b15_1px,transparent_1px),linear-gradient(to_bottom,#18181b15_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
@@ -148,9 +148,9 @@ export default function Hero({ onOpenAudit }) {
           {/* Left Column: Headline & Value Proposition */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             {/* Tagline Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/90 border border-zinc-800 text-xs font-semibold text-zinc-300 mb-5 shadow-inner">
-              <span className="flex h-2 w-2 rounded-full bg-[#E40101] animate-pulse" />
-              <span className="text-[#E40101] font-mono font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-zinc-900/90 border border-zinc-800 text-xs font-semibold text-zinc-300 mb-5 shadow-inner">
+              <span className="flex h-2 w-2 rounded-full bg-[#7c93a3] animate-pulse" />
+              <span className="text-white font-mono font-bold uppercase tracking-wider">
                 Anti-Agency
               </span>
               <span className="text-zinc-600">•</span>
@@ -178,11 +178,11 @@ export default function Hero({ onOpenAudit }) {
               
               <span className="block" style={{ transform: 'translateZ(20px)' }}>
                 We Don't Just <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-[#E40101]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-[#7c93a3]">
                   Market Brands.
                 </span>{" "}
                 <br />
-                <span className="underline decoration-[#E40101] underline-offset-4">
+                <span className="underline decoration-[#7c93a3] underline-offset-4">
                   We Build Them.
                 </span>
               </span>
@@ -197,14 +197,14 @@ export default function Hero({ onOpenAudit }) {
             <div className="flex flex-wrap items-center gap-3.5 sm:gap-4 mb-2 lg:mb-0">
               <button
                 onClick={onOpenAudit}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#E40101] hover:bg-[#ff1a1a] text-white font-bold text-xs uppercase tracking-wider shadow-xl shadow-[#E40101]/30 hover:shadow-[#E40101]/50 transition-all hover:-translate-y-1 cursor-pointer"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#7c93a3] hover:bg-[#6a8292] text-white font-bold text-xs uppercase tracking-wider shadow-xl shadow-[#7c93a3]/20 hover:shadow-[#7c93a3]/30 transition-all hover:-translate-y-1 cursor-pointer"
               >
                 <Sparkles className="w-4 h-4 fill-white" />
                 Book Brand Audit
               </button>
               <a
                 href="#services"
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-700/80 font-bold text-xs uppercase tracking-wider transition-all hover:border-[#E40101]/50 cursor-pointer"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-md bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-700/80 font-bold text-xs uppercase tracking-wider transition-all hover:border-[#7c93a3]/50 cursor-pointer"
               >
                 Explore Services
                 <ArrowRight className="w-4 h-4" />
@@ -214,10 +214,10 @@ export default function Hero({ onOpenAudit }) {
 
           {/* Right Column: Hero Enquiry Form Card */}
           <div className="lg:col-span-5 w-full" id="hero-enquiry">
-            <div className="glass-card rounded-2xl p-5 sm:p-6 lg:p-7 border border-zinc-800 relative shadow-2xl">
+            <div className="glass-card rounded-md p-5 sm:p-6 lg:p-7 border border-zinc-800 relative shadow-2xl">
               <div className="mb-4">
-                <div className="flex items-center gap-2 text-[#E40101] font-mono text-[11px] font-semibold uppercase tracking-wider mb-1">
-                  <Zap className="w-3.5 h-3.5 fill-[#E40101]" />
+                <div className="flex items-center gap-2 text-[#7c93a3] font-mono text-[11px] font-semibold uppercase tracking-wider mb-1">
+                  <Zap className="w-3.5 h-3.5 fill-[#7c93a3]" />
                   Direct Consultation
                 </div>
                 <h3 className="font-heading text-xl sm:text-2xl text-white font-bold uppercase tracking-wide">
@@ -226,7 +226,7 @@ export default function Hero({ onOpenAudit }) {
               </div>
 
               {submitted ? (
-                <div className="py-12 px-4 text-center flex flex-col items-center justify-center bg-zinc-900/60 rounded-2xl border border-emerald-500/30">
+                <div className="py-12 px-4 text-center flex flex-col items-center justify-center bg-zinc-900/60 rounded-md border border-emerald-500/30">
                   <CheckCircle2 className="w-16 h-16 text-emerald-400 mb-4 animate-bounce" />
                   <h4 className="font-heading text-2xl text-white uppercase font-bold">
                     Enquiry Submitted!
@@ -237,7 +237,7 @@ export default function Hero({ onOpenAudit }) {
                   </p>
                   <button
                     onClick={() => { setSubmitted(false); setError(""); }}
-                    className="mt-6 text-xs font-semibold text-[#E40101] underline hover:text-white"
+                    className="mt-6 text-xs font-semibold text-[#7c93a3] underline hover:text-white"
                   >
                     Submit another enquiry
                   </button>
@@ -257,7 +257,7 @@ export default function Hero({ onOpenAudit }) {
                         onChange={(e) =>
                           setFormData({ ...formData, name: e.target.value })
                         }
-                        className="w-full bg-zinc-900/90 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#E40101] transition-colors"
+                        className="w-full bg-zinc-900/90 border border-zinc-800 rounded-sm px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#7c93a3] transition-colors"
                       />
                     </div>
                     <div>
@@ -272,7 +272,7 @@ export default function Hero({ onOpenAudit }) {
                         onChange={(e) =>
                           setFormData({ ...formData, email: e.target.value })
                         }
-                        className="w-full bg-zinc-900/90 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#E40101] transition-colors"
+                        className="w-full bg-zinc-900/90 border border-zinc-800 rounded-sm px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#7c93a3] transition-colors"
                       />
                     </div>
                   </div>
@@ -289,7 +289,7 @@ export default function Hero({ onOpenAudit }) {
                         onChange={(e) =>
                           setFormData({ ...formData, phone: e.target.value })
                         }
-                        className="w-full bg-zinc-900/90 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#E40101] transition-colors"
+                        className="w-full bg-zinc-900/90 border border-zinc-800 rounded-sm px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#7c93a3] transition-colors"
                       />
                     </div>
                     <div>
@@ -303,7 +303,7 @@ export default function Hero({ onOpenAudit }) {
                         onChange={(e) =>
                           setFormData({ ...formData, company: e.target.value })
                         }
-                        className="w-full bg-zinc-900/90 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#E40101] transition-colors"
+                        className="w-full bg-zinc-900/90 border border-zinc-800 rounded-sm px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#7c93a3] transition-colors"
                       />
                     </div>
                   </div>
@@ -339,16 +339,16 @@ export default function Hero({ onOpenAudit }) {
                       onChange={(e) =>
                         setFormData({ ...formData, details: e.target.value })
                       }
-                      className="w-full bg-zinc-900/90 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#E40101] transition-colors resize-none"
+                      className="w-full bg-zinc-900/90 border border-zinc-800 rounded-sm px-3.5 py-2.5 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#7c93a3] transition-colors resize-none"
                     />
                   </div>
 
                   {error && (
                     <div
                       role="alert"
-                      className="flex items-start gap-2 px-3.5 py-2.5 rounded-xl bg-[#E40101]/10 border border-[#E40101]/30 text-[11px] text-red-300"
+                      className="flex items-start gap-2 px-3.5 py-2.5 rounded-sm bg-[#7c93a3]/10 border border-[#7c93a3]/30 text-[11px] text-zinc-300"
                     >
-                      <AlertCircle className="w-3.5 h-3.5 mt-0.5 shrink-0 text-[#E40101]" />
+                      <AlertCircle className="w-3.5 h-3.5 mt-0.5 shrink-0 text-[#7c93a3]" />
                       <span>{error}</span>
                     </div>
                   )}
@@ -356,7 +356,7 @@ export default function Hero({ onOpenAudit }) {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#E40101] hover:bg-[#ff1a1a] text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#E40101]/30 transition-all hover:shadow-[#E40101]/50 disabled:opacity-50"
+                    className="w-full flex items-center justify-center gap-2 py-2.5 rounded-sm bg-[#7c93a3] hover:bg-[#6a8292] text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#7c93a3]/20 transition-all hover:shadow-[#7c93a3]/30 disabled:opacity-50"
                   >
                     {loading ? (
                       <span className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent" />
@@ -370,10 +370,10 @@ export default function Hero({ onOpenAudit }) {
 
                   <div className="flex items-center justify-center gap-4 text-[10px] text-zinc-400 pt-2">
                     <span className="flex items-center gap-1">
-                      <ShieldCheck className="w-3 h-3 text-[#E40101]" /> No Obligation
+                      <ShieldCheck className="w-3 h-3 text-[#7c93a3]" /> No Obligation
                     </span>
                     <span className="flex items-center gap-1">
-                      <CheckCircle2 className="w-3 h-3 text-[#E40101]" /> Confidential
+                      <CheckCircle2 className="w-3 h-3 text-[#7c93a3]" /> Confidential
                     </span>
                   </div>
                 </form>

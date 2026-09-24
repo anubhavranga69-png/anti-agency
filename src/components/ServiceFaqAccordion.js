@@ -16,8 +16,8 @@ export default function ServiceFaqAccordion({ faqs }) {
         return (
           <div
             key={index}
-            className={`glass-card rounded-2xl border transition-all duration-200 overflow-hidden ${
-              isOpen ? "border-[#E40101]/50 bg-zinc-900/90" : "border-zinc-800/80 hover:border-zinc-700"
+            className={`glass-card rounded-md border transition-all duration-200 overflow-hidden ${
+              isOpen ? "border-[#8FA394]/50 bg-zinc-900/90" : "border-zinc-800/80 hover:border-zinc-700"
             }`}
           >
             <button
@@ -26,17 +26,17 @@ export default function ServiceFaqAccordion({ faqs }) {
               aria-expanded={isOpen}
             >
               <div className="flex items-center gap-3 sm:gap-4">
-                <span className="font-mono text-xs text-[#E40101] font-bold">
+                <span className="font-mono text-xs text-[#8FA394] font-bold">
                   {num}
                 </span>
-                <span className="font-heading text-base sm:text-lg text-white font-bold tracking-wide group-hover:text-[#E40101] transition-colors">
+                <span className="font-heading text-base sm:text-lg text-white font-bold tracking-wide group-hover:text-[#8FA394] transition-colors">
                   {faq.q}
                 </span>
               </div>
               <div
-                className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
+                className={`w-8 h-8 rounded-sm border flex items-center justify-center shrink-0 transition-colors ${
                   isOpen
-                    ? "bg-[#E40101] text-white border-[#E40101]"
+                    ? "bg-[#8FA394] text-[#050505] border-[#8FA394]"
                     : "bg-zinc-900 border-zinc-800 text-zinc-400 group-hover:text-white group-hover:border-zinc-700"
                 }`}
               >
